@@ -1,0 +1,2 @@
+gspread==3.0.1
+oauth2client==4.1.3
