@@ -48,3 +48,6 @@ lint: virtualenv_test
 	$(FLAKE8) cunao.py
 
 test: virtualenv_test isort-check lint
+
+run: virtualenv
+	$(PYTHON) cunao.py
