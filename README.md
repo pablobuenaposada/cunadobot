@@ -11,10 +11,9 @@ virtualenv
 ```
 
 ## Install
-```
-make install
-```
-you can add this bot to cron so it's triggered every work day at 12:00 PM for example (replace the cunadobot folder):
+Run `make install` and modify settings.py with your sensitive data.
+
+Then add this bot to cron so it's triggered every work day at 12:00 PM for example (replace the cunadobot folder):
 ```sh
 crontab 00 12 * * mon-fri cd cunadobot-folder/ && make run
 ```

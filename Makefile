@@ -32,6 +32,7 @@ virtualenv:
 	$(PIP) install -r $(REQUIREMENTS)
 
 install: virtualenv
+	@cp settings.example.py settings.py
 
 virtualenv_test:
 	test -d .venv_test || virtualenv -p python3.6 .venv_test
