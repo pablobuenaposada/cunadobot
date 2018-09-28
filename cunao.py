@@ -1,7 +1,9 @@
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-import requests
 import datetime
+
+import gspread
+import requests
+from oauth2client.service_account import ServiceAccountCredentials
+
 import settings
 
 SLACK_URL = settings.SLACK_URL
