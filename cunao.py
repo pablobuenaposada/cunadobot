@@ -2,23 +2,24 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import requests
 import datetime
+import settings
 
-SLACK_URL = 'https://hooks.slack.com/services/666'
+SLACK_URL = settings.SLACK_URL
 # change this for testing pourposes
-CHANNEL = '#your_channel'
+CHANNEL = settings.SLACK_CHANNEL
 
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds']
 creds = ServiceAccountCredentials.from_json_keyfile_name(
-    '/home/pi/Desktop/cunao_credentials.json',
+    settings.CREDENTIALS_FILE,
     scope)
 client = gspread.authorize(creds)
 
-sheet = client.open("Cunadobot").sheet1
+sheet = client.open(settings.SHEET_NAME).sheet1
 phrases = sheet.get_all_records()
 
 
-def send_phrase(self):
+def main():
     day_of_the_year = datetime.datetime.now().timetuple().tm_yday
     selected_phrase = day_of_the_year % (len(phrases))
     text = phrases[selected_phrase]['Phrase']
@@ -31,4 +32,5 @@ def send_phrase(self):
     requests.post(SLACK_URL, json=data)
 
 
-send_phrase()
+if __name__ == '__main__':
+    main()
