@@ -4,3 +4,4 @@ venv/
 .venv_tmp/
 settings.py
 credentials.json
+*.swp
