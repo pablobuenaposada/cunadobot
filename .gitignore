@@ -1,4 +1,6 @@
+__pycache__/
 venv/
 .venv_test/
 .venv_tmp/
 settings.py
+credentials.json
