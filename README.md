@@ -17,6 +17,10 @@ Then add this bot to cron so it's triggered every work day at 12:00 PM for examp
 ```sh
 crontab 00 12 * * mon-fri cd cunadobot-folder/ && make run
 ```
+## Quotes source
+Quotes will be picked from a Google Drive spreadsheet, for testing purposes settings.example.py is set to use [this](https://docs.google.com/spreadsheets/d/1Op02wAow7MEStkCtzAoNhDcbr6osR2AJAUdlIkFZ_yk/edit?usp=sharing) public one. 
+
+Use the same template to make your own.
 
 ## Make commands
 - `make test` will do an isort check and flake8.

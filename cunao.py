@@ -24,7 +24,7 @@ phrases = sheet.get_all_records()
 def main():
     day_of_the_year = datetime.datetime.now().timetuple().tm_yday
     selected_phrase = day_of_the_year % (len(phrases))
-    text = phrases[selected_phrase]['Phrase']
+    text = phrases[selected_phrase]['Quote']
     data = {
         'channel': CHANNEL,
         'username': 'cunadobot',
