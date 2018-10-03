@@ -6,6 +6,7 @@ PIP_TMP=".venv_tmp/bin/pip"
 PIP_TEST=".venv_test/bin/pip"
 ISORT=".venv_test/bin/isort"
 FLAKE8=".venv_test/bin/flake8"
+PYTEST=".venv_test/bin/pytest"
 
 REQUIREMENTS:=requirements.txt
 REQUIREMENTS_BASE:=requirements/base.txt
@@ -49,6 +50,7 @@ lint: virtualenv_test
 	$(FLAKE8) cunao.py
 
 test: virtualenv_test isort-check lint
+	$(PYTEST) tests
 
 run: virtualenv
 	$(PYTHON) cunao.py
