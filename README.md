@@ -1,5 +1,7 @@
 # CunadoBot
 
+[![Build Status](https://travis-ci.org/pablobuenaposada/cunadobot.svg?branch=master)](https://travis-ci.org/pablobuenaposada/cunadobot)
+
 Bot that posts random cunado-like quotes to a Slack channel.
 Quotes come from a Google Drive spreadsheet.
 
