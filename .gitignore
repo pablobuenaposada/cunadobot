@@ -5,3 +5,5 @@ venv/
 settings.py
 credentials.json
 *.swp
+deploy_key
+.idea/
