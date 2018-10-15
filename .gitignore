@@ -6,3 +6,5 @@ settings.py
 credentials.json
 *.swp
 used_phrases.json
+deploy_key
+.idea/
