@@ -4,9 +4,10 @@ PYTHON="venv/bin/python"
 PIP_TMP=".venv_tmp/bin/pip"
 
 PIP_TEST=".venv_test/bin/pip"
+PYTHON_TEST=".venv_test/bin/python"
 ISORT=".venv_test/bin/isort"
 FLAKE8=".venv_test/bin/flake8"
-PYTEST=".venv_test/bin/pytest"
+
 
 REQUIREMENTS:=requirements.txt
 REQUIREMENTS_BASE:=requirements/base.txt
@@ -14,7 +15,7 @@ REQUIREMENTS_TEST:=requirements/test.txt
 
 PIP_DOWNLOAD:=.pip_download
 
-.PHONY: requirements
+.PHONY: requirements settings
 
 clean:
 	@find . -name *.pyc -delete
@@ -32,8 +33,10 @@ virtualenv:
 	$(PIP) install -U "pip"
 	$(PIP) install -r $(REQUIREMENTS)
 
-install: virtualenv
+settings:
 	@cp settings.example.py settings.py
+
+install: virtualenv settings
 
 virtualenv_test:
 	test -d .venv_test || virtualenv -p python3.6 .venv_test
@@ -49,8 +52,8 @@ isort: virtualenv_test
 lint: virtualenv_test
 	$(FLAKE8) cunao.py
 
-test: virtualenv_test isort-check lint
-	$(PYTEST) tests
+test: virtualenv_test settings isort-check lint
+	$(PYTHON_TEST) -m pytest tests
 
 run: virtualenv
 	$(PYTHON) cunao.py
