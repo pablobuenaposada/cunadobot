@@ -83,7 +83,7 @@ def main():
         'username': 'cunadobot',
         'text': text.upper()
     }
-    print(selected_phrase, phrases_amount, text)
+    # print(selected_phrase, phrases_amount, text)
     requests.post(SLACK_URL, json=data)
 
     add_used_phrase_idx(list(used_phrases), selected_phrase, phrases_amount)
