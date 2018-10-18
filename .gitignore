@@ -8,3 +8,4 @@ credentials.json
 used_phrases.json
 deploy_key
 .idea/
+.coverage

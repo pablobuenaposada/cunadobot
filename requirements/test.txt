@@ -4,3 +4,4 @@ flake8
 isort
 pytest
 mock
+pytest-cov
