@@ -10,9 +10,6 @@ import settings
 
 USED_PHRASE_FILE = 'used_phrases.json'
 USED_PHRASE_KEY = 'used_phrases'
-SLACK_URL = settings.SLACK_URL
-# change this for testing pourposes
-CHANNEL = settings.SLACK_CHANNEL
 
 
 def get_phrases():
@@ -62,6 +59,14 @@ def choice_phrase(amount_phrases, used_phrases):
     return random.choice(list(all_phrases))
 
 
+def write_quote_to_slack(quote):
+    """
+    Writes the uppercase quote to the selected slack web hook
+    """
+
+    return requests.post(settings.SLACK_URL, json={'text': quote.upper()})
+
+
 def add_used_phrase_idx(used_phrases_idx, phrase_idx, phrases_amount):
     if phrases_amount <= len(used_phrases_idx):
         used_phrases_idx = []
@@ -76,15 +81,9 @@ def main():
     phrases_amount = len(phrases)
     used_phrases = get_used_phrases()
     selected_phrase = choice_phrase(phrases_amount, used_phrases)
+    quote = phrases[selected_phrase]['Quote']
 
-    text = phrases[selected_phrase]['Quote']
-    data = {
-        'channel': CHANNEL,
-        'username': 'cunadobot',
-        'text': text.upper()
-    }
-    # print(selected_phrase, phrases_amount, text)
-    requests.post(SLACK_URL, json=data)
+    write_quote_to_slack(quote)
 
     add_used_phrase_idx(list(used_phrases), selected_phrase, phrases_amount)
 
