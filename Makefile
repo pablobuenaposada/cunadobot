@@ -53,7 +53,7 @@ lint: virtualenv_test
 	$(FLAKE8) cunao.py
 
 test: virtualenv_test settings isort-check lint
-	$(PYTHON_TEST) -m pytest tests
+	$(PYTHON_TEST) -m pytest --cov=src tests
 
 run: virtualenv
 	$(PYTHON) cunao.py
