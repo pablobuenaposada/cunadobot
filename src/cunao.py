@@ -71,7 +71,9 @@ def write_quote_to_slack(quote):
     Writes the uppercase quote to the selected slack web hook
     """
 
-    return requests.post(settings.SLACK_URL, json={'text': quote.upper()})
+    for url in settings.SLACK_URLS:
+        # TODO: catch post exceptions in order to continue posting with the remaining urls
+        requests.post(url, json={'text': quote.upper()})
 
 
 def add_used_quote_idx(used_quotes_idx, quote_idx, quotes_amount):
