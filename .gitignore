@@ -5,7 +5,7 @@ venv/
 settings.py
 credentials.json
 *.swp
-used_phrases.json
+used_quotes.json
 deploy_key
 .idea/
 .coverage
