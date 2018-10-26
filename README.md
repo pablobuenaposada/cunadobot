@@ -1,6 +1,6 @@
 # CunadoBot
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0294cc92c1b04071913414a4f6d69f8d)](https://app.codacy.com/app/lgarest/cunadobot?utm_source=github.com&utm_medium=referral&utm_content=pablobuenaposada/cunadobot&utm_campaign=Badge_Grade_Dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5a40f45ecca484589623a8010924879)](https://www.codacy.com/app/pablobuenaposada/cunadobot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pablobuenaposada/cunadobot&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/pablobuenaposada/cunadobot.svg?branch=master)](https://travis-ci.org/pablobuenaposada/cunadobot)
 
 Bot that posts random cunado-like quotes to a Slack channel.
