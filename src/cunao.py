@@ -38,11 +38,8 @@ def get_used_quotes():
     """
 
     used_quotes = set()
-    try:
-        with open(USED_QUOTE_FILE) as json_file:
-            used_quotes = json.load(json_file)
-    except Exception:
-        pass
+    with open(USED_QUOTE_FILE) as json_file:
+        used_quotes = json.load(json_file)
 
     if used_quotes and USED_QUOTE_KEY in used_quotes.keys():
         used_quotes = set(used_quotes[USED_QUOTE_KEY])
