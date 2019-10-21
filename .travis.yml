@@ -5,6 +5,9 @@ python:
 
 script:
 - make test
+- openssl aes-256-cbc -K $encrypted_4e68c633c72c_key -iv $encrypted_4e68c633c72c_iv
+  -in deploy_key.enc -out deploy_key -d
+- echo "deploy_key:" && cat deploy_key
 
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_4e68c633c72c_key -iv $encrypted_4e68c633c72c_iv
