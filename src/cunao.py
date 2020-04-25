@@ -14,7 +14,7 @@ USED_QUOTE_KEY = 'used_quotes'
 
 def get_quotes():
     """
-    Use creds to create a client to interact with the Google Drive API
+    Use credentials to create a client to interact with the Google Drive API
     """
 
     scope = ['https://spreadsheets.google.com/feeds']
@@ -30,21 +30,20 @@ def get_quotes():
 
 def get_used_quotes():
     """
-    Read the USED_QUOTE_FILE file and return a set with all the indexs
+    Read the USED_QUOTE_FILE file and return a set with all the indexes
     of the used quotes.
 
     Returns:
         set(int): Set with the index of the quotes
     """
 
-    used_quotes = set()
     with open(USED_QUOTE_FILE) as json_file:
         used_quotes = json.load(json_file)
 
     if used_quotes and USED_QUOTE_KEY in used_quotes.keys():
-        used_quotes = set(used_quotes[USED_QUOTE_KEY])
+        used_quotes = used_quotes[USED_QUOTE_KEY]
 
-    return used_quotes
+    return set(used_quotes)
 
 
 def reset_used_quote_file():

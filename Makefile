@@ -22,14 +22,14 @@ clean:
 	@rm -rf venv .venv_test .venv_tmp $(PIP_DOWNLOAD)
 
 requirements:
-	virtualenv -p python3.6 .venv_tmp
+	virtualenv -p python3.7 .venv_tmp
 	$(PIP_TMP) install -U "pip"
 	$(PIP_TMP) install -r $(REQUIREMENTS_BASE)
 	$(PIP_TMP) freeze > requirements.txt
 	@rm -rf .venv_tmp
 
 virtualenv:
-	test -d venv || virtualenv -p python3.6 venv
+	test -d venv || virtualenv -p python3.7 venv
 	$(PIP) install -U "pip"
 	$(PIP) install -r $(REQUIREMENTS)
 
@@ -39,7 +39,7 @@ settings:
 install: virtualenv settings
 
 virtualenv_test:
-	test -d .venv_test || virtualenv -p python3.6 .venv_test
+	test -d .venv_test || virtualenv -p python3.7 .venv_test
 	$(PIP_TEST) install -U "pip"
 	$(PIP_TEST) install -r $(REQUIREMENTS_TEST)
 

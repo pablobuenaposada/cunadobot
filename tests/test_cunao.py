@@ -1,5 +1,5 @@
 import settings
-from src.cunao import get_quotes, write_quote_to_slack
+from src.cunao import get_quotes, write_quote_to_slack, get_used_quotes
 from mock import call, patch
 
 TEST_QUOTE = 'Con una cerveza no das positivo'
@@ -29,3 +29,9 @@ def test_write_quote_to_slack_with_more_tha_one_url():
 
         assert mock_get.call_count is len(expected_calls)
         mock_get.assert_has_calls(expected_calls, any_order=True)
+
+
+def test_get_used_quotes_with_empty_file():
+    with patch('json.load') as m_load:
+        m_load.return_value = {}  # empty file
+        assert get_used_quotes() == set()
