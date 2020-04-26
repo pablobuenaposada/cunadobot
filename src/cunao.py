@@ -8,8 +8,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 import settings
 
-USED_QUOTE_FILE = 'used_quotes.json'
-USED_QUOTE_KEY = 'used_quotes'
+USED_QUOTE_FILE = "used_quotes.json"
+USED_QUOTE_KEY = "used_quotes"
 
 
 def get_quotes():
@@ -17,10 +17,10 @@ def get_quotes():
     Use credentials to create a client to interact with the Google Drive API
     """
 
-    scope = ['https://spreadsheets.google.com/feeds']
+    scope = ["https://spreadsheets.google.com/feeds"]
     creds = ServiceAccountCredentials.from_json_keyfile_name(
-        settings.CREDENTIALS_FILE,
-        scope)
+        settings.CREDENTIALS_FILE, scope
+    )
     client = gspread.authorize(creds)
 
     sheet = client.open(settings.SHEET_NAME).sheet1
@@ -69,7 +69,7 @@ def write_quote_to_slack(quote):
 
     for url in settings.SLACK_URLS:
         # TODO: catch post exceptions in order to continue posting with the remaining urls
-        requests.post(url, json={'text': quote.upper()})
+        requests.post(url, json={"text": quote.upper()})
 
 
 def add_used_quote_idx(used_quotes_idx, quote_idx, quotes_amount):
@@ -77,7 +77,7 @@ def add_used_quote_idx(used_quotes_idx, quote_idx, quotes_amount):
         used_quotes_idx = []
     used_quotes_idx.append(quote_idx)
     data = {USED_QUOTE_KEY: used_quotes_idx}
-    with open(USED_QUOTE_FILE, 'w+') as file:
+    with open(USED_QUOTE_FILE, "w+") as file:
         file.write(json.dumps(data))
 
 
@@ -86,7 +86,7 @@ def main():
     quotes_amount = len(quotes)
     used_quotes = get_used_quotes()
     selected_quote = choice_quote(quotes_amount, used_quotes)
-    quote = quotes[selected_quote]['Quote']
+    quote = quotes[selected_quote]["Quote"]
 
     write_quote_to_slack(quote)
 

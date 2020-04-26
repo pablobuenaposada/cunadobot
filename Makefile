@@ -5,6 +5,7 @@ PIP_TMP=".venv_tmp/bin/pip"
 
 PIP_TEST=".venv_test/bin/pip"
 PYTHON_TEST=".venv_test/bin/python"
+BLACK=".venv_test/bin/black"
 ISORT=".venv_test/bin/isort"
 FLAKE8=".venv_test/bin/flake8"
 
@@ -43,6 +44,12 @@ virtualenv_test:
 	$(PIP_TEST) install -U "pip"
 	$(PIP_TEST) install -r $(REQUIREMENTS_TEST)
 
+black-check: virtualenv_test
+	$(BLACK) src tests --check
+
+black:  virtualenv_test
+	$(BLACK) src tests
+
 isort-check: virtualenv_test
 	$(ISORT) --diff cunao.py
 
@@ -52,7 +59,7 @@ isort: virtualenv_test
 lint: virtualenv_test
 	$(FLAKE8) cunao.py
 
-test: virtualenv_test settings isort-check lint
+test: virtualenv_test settings black-check isort-check lint
 	$(PYTHON_TEST) -m pytest --cov=src tests
 
 run: virtualenv
