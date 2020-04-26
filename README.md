@@ -26,8 +26,9 @@ Quotes will be picked from a Google Drive spreadsheet, for testing purposes sett
 Use the same template to make your own.
 
 ## Make commands
-- `make test` will do an isort check and flake8.
+- `make test` will do an isort check, flake8 and black.
 - `make isort` wil sort the imports.
+- `make black` will run black. 
 - `make lint` will run flake8.
 - `make requirements` will generate a new requirements.txt file with the last requirements version.
 - `make clean` will clean the project folder from unnecessary files.
