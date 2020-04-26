@@ -1,6 +1,6 @@
 import settings
 from src.cunao import get_quotes, write_quote_to_slack, get_used_quotes
-from mock import call, patch
+from mock import call, patch, mock_open
 
 TEST_QUOTE = "Con una cerveza no das positivo"
 
@@ -33,7 +33,9 @@ def test_write_quote_to_slack_with_more_tha_one_url():
         mock_get.assert_has_calls(expected_calls, any_order=True)
 
 
-def test_get_used_quotes_with_empty_file():
-    with patch("json.load") as m_load:
-        m_load.return_value = {}  # empty file
+def test_get_used_quotes_with_no_json_file():
+    """
+    If the used quotes files is empty or not a json still should return an empty set
+    """
+    with patch("builtins.open", mock_open(read_data="not a json")):
         assert get_used_quotes() == set()

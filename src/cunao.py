@@ -1,6 +1,7 @@
 import json
 import os
 import random
+from json import JSONDecodeError
 
 import gspread
 import requests
@@ -41,7 +42,10 @@ def get_used_quotes():
     """
 
     with open(USED_QUOTE_FILE) as json_file:
-        used_quotes = json.load(json_file)
+        try:
+            used_quotes = json.load(json_file)
+        except JSONDecodeError:  # if it's not json
+            used_quotes = {}
 
     if used_quotes and USED_QUOTE_KEY in used_quotes.keys():
         used_quotes = used_quotes[USED_QUOTE_KEY]
