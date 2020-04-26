@@ -9,7 +9,7 @@ Quotes come from a Google Drive spreadsheet.
 ## System requirements
 ```bash
 make
-python 3.6
+python 3.7
 virtualenv
 ```
 
