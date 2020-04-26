@@ -14,11 +14,19 @@ virtualenv
 ```
 
 ## Install
-Run `make install` and modify settings.py with your sensitive data.
+Run `make install`
+
+Create an [Slack incoming webhook](https://api.slack.com/messaging/webhooks)
+
+Modify settings.py with your sensitive data (only changing `SLACK_URLS` you should be good for a test)
+
+Run `make run` and check if you recieve the message in slack.
+
+To interact with your own google spreadsheet please google on how to create a credential.json for it and replace it by the included one.
 
 Then add this bot to cron so it's triggered every work day at 12:00 PM for example (replace the cunadobot folder):
 ```sh
-crontab 00 12 * * mon-fri cd cunadobot-folder/ && make run
+00 12 * * mon-fri cd cunadobot-folder/ && make run
 ```
 ## Quotes source
 Quotes will be picked from a Google Drive spreadsheet, for testing purposes settings.example.py is set to use [this](https://docs.google.com/spreadsheets/d/1Op02wAow7MEStkCtzAoNhDcbr6osR2AJAUdlIkFZ_yk/edit?usp=sharing) public one.
