@@ -17,7 +17,10 @@ def get_quotes():
     Use credentials to create a client to interact with the Google Drive API
     """
 
-    scope = ["https://spreadsheets.google.com/feeds"]
+    scope = [
+        "https://spreadsheets.google.com/feeds",
+        "https://www.googleapis.com/auth/drive",
+    ]
     creds = ServiceAccountCredentials.from_json_keyfile_name(
         settings.CREDENTIALS_FILE, scope
     )
