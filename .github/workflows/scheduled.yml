@@ -1,0 +1,14 @@
+name: Scheduled
+
+on:
+  schedule:
+    - cron: '* * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: run cunadobot
+        run: |
+          make run
